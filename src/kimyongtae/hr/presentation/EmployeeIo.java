@@ -19,7 +19,7 @@ public class EmployeeIo {
 	
 	public void play() {
 		Job job = null;
-		while((job = Console.choose(menu, menuLength)) != Job.EXIT) {
+		while((job = choose(menu, menuLength)) != Job.EXIT) {
 			switch(job) {
 			case LIST: this.listEmployees(); break;
 			case ADD:  this.addEmployee(); break;
@@ -27,6 +27,35 @@ public class EmployeeIo {
 			case DEL:  this.delEmployee(); 
 			}
 		}
+	}
+	
+	private Job choose(String menu, int length) {
+		boolean isGood = false;
+		int choice = 0;
+		
+		do {
+			System.out.println();
+			choice = Console.inNum(menu);
+			if(choice < 0 || choice > length)
+				Console.err("존재하는 메뉴 번호를 입력하세요.");
+			else isGood = true;
+		} while(!isGood);
+		
+		return toJob(choice);
+	}
+	
+	private Job toJob(int num) {
+		Job job = null;
+		
+		switch(num) {
+		case 0: job = Job.EXIT; break;
+		case 1: job = Job.LIST; break;
+		case 2: job = Job.ADD; break;
+		case 3: job = Job.FIX; break;
+		case 4: job = Job.DEL;
+		}
+		
+		return job;
 	}
 	
 	private void listEmployees() {

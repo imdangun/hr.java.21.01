@@ -86,35 +86,6 @@ public interface Console {
 		return date;
 	}
 	
-	static Job choose(String menu, int length) {
-		boolean isGood = false;
-		int choice = 0;
-		
-		do {
-			System.out.println();
-			choice = inNum(menu);
-			if(choice < 0 || choice > length)
-				Console.err("존재하는 메뉴 번호를 입력하세요.");
-			else isGood = true;
-		} while(!isGood);
-		
-		return toJob(choice);
-	}
-	
-	static Job toJob(int num) {
-		Job job = null;
-		
-		switch(num) {
-		case 0: job = Job.EXIT; break;
-		case 1: job = Job.LIST; break;
-		case 2: job = Job.ADD; break;
-		case 3: job = Job.FIX; break;
-		case 4: job = Job.DEL;
-		}
-		
-		return job;
-	}
-	
 	static String menu(String[] menuItem) {
 		String menu = "";
 		
