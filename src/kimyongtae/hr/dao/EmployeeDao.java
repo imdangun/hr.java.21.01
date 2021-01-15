@@ -7,8 +7,8 @@ import kimyongtae.hr.domain.Employee;
 
 public interface EmployeeDao {
 	List<Employee> selectEmployees();
-	Employee selectEmployee(int empNum);
+	Employee selectEmployee(int empId);
 	boolean insertEmployee(String empName, LocalDate hireDate);
 	boolean updateEmployee(Employee emp);
-	boolean deleteEmployee(int empNum);
+	boolean deleteEmployee(int empId);
 }

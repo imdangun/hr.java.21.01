@@ -3,18 +3,18 @@ package kimyongtae.hr.domain;
 import java.time.LocalDate;
 
 public class Employee {
-	private int empNum;
+	private int empId;
 	private String empName;
 	private LocalDate hireDate;
 	
-	public Employee(int empNum, String empName, LocalDate hireDate) {
-		this.empNum = empNum;
+	public Employee(int empId, String empName, LocalDate hireDate) {
+		this.empId = empId;
 		this.empName = empName;
 		this.hireDate = hireDate;
 	}
 
-	public int getEmpNum() {
-		return empNum;
+	public int getEmpId() {
+		return empId;
 	}
 
 	public String getEmpName() {
@@ -25,8 +25,8 @@ public class Employee {
 		return hireDate;
 	}
 
-	public void setEmpNum(int empNum) {
-		this.empNum = empNum;
+	public void setEmpId(int empId) {
+		this.empId = empId;
 	}
 
 	public void setEmpName(String empName) {
@@ -39,6 +39,6 @@ public class Employee {
 	
 	@Override
 	public String toString() {
-		return String.format("%4d %-6s %s", empNum, empName, hireDate);
+		return String.format("%4d %-6s %s", empId, empName, hireDate);
 	}
 }

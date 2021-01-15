@@ -86,13 +86,13 @@ public class EmployeeIo {
 			Employee emp = null;
 			
 			do {
-				int empNum = Console.inNum("수정할 사원번호를 입력하세요.");
-				if(empNum == 0) {
+				int empId = Console.inNum("수정할 사원번호를 입력하세요.");
+				if(empId == 0) {
 					Console.info("사원 수정을 취소합니다.");
 					return;
 				}
 				
-				emp = empService.getEmployee(empNum);
+				emp = empService.getEmployee(empId);
 				if(emp == null) Console.err("입력한 사원번호의 사원이 없습니다.");
 			} while(emp == null);
 			
@@ -107,20 +107,20 @@ public class EmployeeIo {
 	private void delEmployee() {
 		if(empService.getEmployees().size() != 0) {
 			Employee emp = null;
-			int empNum = 0;
+			int empId = 0;
 			
 			do {
-				empNum = Console.inNum("삭제할 사원번호를 입력하세요.");
-				if(empNum == 0) {
+				empId = Console.inNum("삭제할 사원번호를 입력하세요.");
+				if(empId == 0) {
 					Console.info("사원 삭제를 취소합니다.");
 					return;
 				}
 				
-				emp = empService.getEmployee(empNum);
+				emp = empService.getEmployee(empId);
 				if(emp == null) Console.err("입력한 사원번호의 사원이 없습니다.");
 			} while(emp == null);
 			
-			if(empService.delEmployee(empNum)) Console.success("사원 삭제");
+			if(empService.delEmployee(empId)) Console.success("사원 삭제");
 			else Console.fail("사원 삭제");
 		} else Console.info("사원이 없습니다.");
 	}

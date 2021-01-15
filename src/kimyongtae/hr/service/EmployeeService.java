@@ -7,8 +7,8 @@ import kimyongtae.hr.domain.Employee;
 
 public interface EmployeeService {
 	List<Employee> getEmployees();
-	Employee getEmployee(int empNum);
+	Employee getEmployee(int empId);
 	boolean addEmployee(String empName, LocalDate hireDate);
 	boolean fixEmployee(Employee emp);
-	boolean delEmployee(int empNum);
+	boolean delEmployee(int empId);
 }

@@ -7,11 +7,11 @@ import kimyongtae.hr.domain.Employee;
 
 public class EmployeeDaoImpl implements EmployeeDao {
 	private List<Employee> empList;
-	private int empNumSeq;
+	private int empIdSeq;
 	
 	public EmployeeDaoImpl(List<Employee> empList) {
 		this.empList = empList;
-		this.empNumSeq = 1;
+		this.empIdSeq = 1;
 	}
 	
 	@Override
@@ -20,12 +20,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 	
 	@Override
-	public Employee selectEmployee(int empNum) {
+	public Employee selectEmployee(int empId) {
 		Employee emp = null;
 		
-		for(Employee temp: empList) {
-			if(temp.getEmpNum() == empNum) {
-				emp = temp;
+		for(Employee tEmp: empList) {
+			if(tEmp.getEmpId() == empId) {
+				emp = tEmp;
 				break;
 			}
 		}
@@ -35,7 +35,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	
 	@Override
 	public boolean insertEmployee(String empName, LocalDate hireDate) {		
-		return empList.add(new Employee(empNumSeq++, empName, hireDate));
+		return empList.add(new Employee(empIdSeq++, empName, hireDate));
 	}
 	
 	@Override
@@ -43,9 +43,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		boolean isUpdated = false;
 		Employee employee = null;		
 		
-		for(Employee temp: empList) {
-			if(temp.getEmpNum() == emp.getEmpNum()) {
-				employee = temp;					
+		for(Employee tEmp: empList) {
+			if(tEmp.getEmpId() == emp.getEmpId()) {
+				employee = tEmp;					
 				employee.setEmpName(emp.getEmpName());
 				employee.setHireDate(emp.getHireDate());
 				
@@ -58,13 +58,13 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 	
 	@Override
-	public boolean deleteEmployee(int empNum) {
+	public boolean deleteEmployee(int empId) {
 		boolean isDeleted = false;
 		Employee emp = null;
 		
 		for(int i = 0; i < empList.size(); i++) {
 			emp = empList.get(i);
-			if(emp.getEmpNum() == empNum) {
+			if(emp.getEmpId() == empId) {
 				isDeleted = empList.remove(emp);
 				break;
 			}
